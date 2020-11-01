@@ -120,4 +120,14 @@ export class HeroService {
   private log(message: string) {
     this.messageService.add(`HeroService: ${message}`);
   }
+
+  test() {
+    this.http.get<any>('https://api.npms.io/v2/search?q=scope:angular').subscribe(data => {
+      console.log(data.total);
+    })
+    // return this.http.get<Hero>('https://api.npms.io/v2/search?q=scope:angular').pipe(
+    //   tap(data => this.log(`fetched hero id=${data}`)),
+    //   catchError(this.handleError<Hero>(`getHero id`))
+    // );
+  }
 }
